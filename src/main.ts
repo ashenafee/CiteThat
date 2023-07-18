@@ -12,6 +12,7 @@ import InputText from 'primevue/inputtext';
 import ProgressBar from 'primevue/progressbar';
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
+import Dialog from 'primevue/dialog';
 import './assets/index.css';
 
 import App from './App.vue'
@@ -28,5 +29,6 @@ app.component('InputText', InputText);
 app.component('ProgressBar', ProgressBar);
 app.component('Accordion', Accordion);
 app.component('AccordionTab', AccordionTab);
+app.component('Dialog', Dialog);
 
 app.mount('#app')
