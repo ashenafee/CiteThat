@@ -4,6 +4,8 @@
 
 CiteThat is a simple tool to help you cite your sources. It is built using **Vue**. With CiteThat, you can look up information on *almost* any paper available through PubMed.
 
+https://github.com/ashenafee/CiteThat/assets/20289287/f8f8f74e-9595-42bb-8b17-e4b8c95a4526
+
 ## Background
 
 I created CiteThat after having a job interview where the interviewer brought up **Vue**, but I had no experience in Vue. This tool is the result of me learning Vue.
