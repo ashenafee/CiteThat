@@ -19,6 +19,12 @@ export const articleStore = reactive({
             doi: rawArticle.DOI,
             url: rawArticle.URL,
             subjects: rawArticle.subject,
+            authors: rawArticle.author,
+            journal: rawArticle['container-title'][0],
+            year: rawArticle.issued['date-parts'][0][0],
+            volume: rawArticle.volume,
+            issue: rawArticle.issue,
+            pages: rawArticle.page
         }
         this.article = article;
     }

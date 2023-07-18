@@ -3,23 +3,29 @@
 import { ref } from "vue";
 
 const visible = ref(false);
+const visibleCitation = ref(false);
+const citation = ref('');
 
 import { articleStore } from '@/stores/article';
 
 const onClickCite = () => {
 
+  // Grab the text from the PubMed URL input field
+  const inputTextElement = document.getElementById("pubmed-search") as HTMLInputElement;
+  const inputText = inputTextElement.value;
+
+  if (!inputText) {
+    alert('Please enter a PubMed URL.');
+    return;
+  }
+  
   const resultsElement = document.getElementById('pubmed-results') as HTMLDivElement;
 
   // Grab the progress bar and begin it
   const progressBar = document.getElementById('pubmed-progress') as HTMLProgressElement;
   progressBar.classList.replace('invisible', 'visible');
 
-  // Grab the text from the PubMed URL input field
-  const inputTextElement = document.getElementById("pubmed-search") as HTMLInputElement;
-  const inputText = inputTextElement.value;
-
   // Parse the ID from the PubMed URL
-  // e.g., 37176923 in https://pubmed.ncbi.nlm.nih.gov/37176923/
   const pmid = parsePmid(inputText);
 
   // Call the Entrez API
@@ -70,6 +76,31 @@ const parsePmid = (url: string) => {
   });
 
   return elements.pop();
+};
+
+const onClickGetCitation = () => {
+
+  // Get the authors
+  let authors = '';
+  if (articleStore.article.authors) {
+    articleStore.article.authors.forEach((author) => {
+      authors += `${author.given} ${author.family}, `;
+    });
+    authors = authors.slice(0, -2);
+  }
+
+  const articleTitle = articleStore.article.title;
+  const journalTitle = articleStore.article.journal;
+  const year = articleStore.article.year;
+  const volume = articleStore.article.volume;
+  const issue = articleStore.article.issue;
+  const pages = articleStore.article.pages;
+
+  // Set the citation
+  citation.value = `${authors}. ${articleTitle}. ${journalTitle}. ${year};${volume}(${issue}):${pages}.`;
+
+  // Open the dialog
+  visibleCitation.value = true;
 };
 
 const onClickDownload = () => {
@@ -140,6 +171,12 @@ const onClickSetSource = () => {
         </div>
       </Dialog>
 
+      <Dialog v-model:visible="visibleCitation" modal header="CSE Citation" :style="{ width: '50vw' }">
+        <div class="flex flex-row w-full justify-center items-center">
+          <p class="text-lg font-bold mb-2">{{ citation }}</p>
+        </div>
+      </Dialog>
+
       <ProgressBar id="pubmed-progress" mode="indeterminate" class="h-2 mt-2 rounded-xl invisible"></ProgressBar>
       <div id="pubmed-results" class="invisible">
         <Accordion>
@@ -151,7 +188,7 @@ const onClickSetSource = () => {
         </Accordion>
 
         <div class="mt-2 flex flex-row w-full">
-          <Button severity="info" class="mr-2 border-0 rounded-xl focus:shadow-none w-1/2 justify-center">Cite</Button>
+          <Button severity="info" class="mr-2 border-0 rounded-xl focus:shadow-none w-1/2 justify-center" v-on:click="onClickGetCitation">Cite</Button>
           <Button severity="info" class="mr-2 border-0 rounded-xl focus:shadow-none w-1/2 text-center justify-center"
             v-on:click="onClickDownload">Download</Button>
           <Button severity="info" class="focus:shadow-none border-0 rounded-xl w-1/2 text-center justify-center"
