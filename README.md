@@ -2,9 +2,9 @@
 
 ## About
 
-CiteThat is a simple tool to help you cite your sources. It is built using **Vue**. With CiteThat, you can look up information on *almost* any paper available through PubMed.
+[CiteThat](https://citethat.netlify.app/) is a simple tool to help you cite your sources. It is built using **Vue**. With CiteThat, you can look up information on *almost* any paper available through PubMed.
 
-https://github.com/ashenafee/CiteThat/assets/20289287/f8f8f74e-9595-42bb-8b17-e4b8c95a4526
+https://github.com/ashenafee/CiteThat/assets/20289287/11b94878-d175-46aa-94f9-4376da7137ba
 
 ## Background
 
@@ -12,6 +12,7 @@ I created CiteThat after having a job interview where the interviewer brought up
 
 ## Installation
 
+In your terminal, run the following commands to have a working local environment from which you can run the project.
 ```bash
 git clone https://github.com/ashenafee/CiteThat.git
 cd CiteThat
@@ -19,6 +20,12 @@ npm install
 ```
 
 ## Usage
+
+### Remote
+
+You can use the freely hosted version of CiteThat available [here](https://citethat.netlify.app/). Note that this means it is more subject to rate limits and slow downs.
+
+### Local
 
 1. Run the following command to start the server:
 
@@ -33,5 +40,6 @@ npm install
 
 ## Roadmap
 
-- [ ] Parse information necessary for citations
-- [ ] Allow the user to input their own sources for downloading
+- [ ] Add multiple citation formats
+- [x] Parse information necessary for citations
+- [x] Allow the user to input their own sources for downloading
