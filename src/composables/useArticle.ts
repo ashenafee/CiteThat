@@ -42,12 +42,12 @@ export async function fetchArticle(pmid: string): Promise<Article> {
 };
 
 
-/**
- * Fetches the citation data from the PubMed API.
- * 
- * @param article - The article to fetch the citation for.
- * @returns The citation data.
- */
-export const fetchCitation = async (article) => {
-    // Logic to fetch citation
-};
+// /**
+//  * Fetches the citation data from the PubMed API.
+//  * 
+//  * @param article - The article to fetch the citation for.
+//  * @returns The citation data.
+//  */
+// export const fetchCitation = async (article) => {
+//     // Logic to fetch citation
+// };
