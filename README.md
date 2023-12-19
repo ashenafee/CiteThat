@@ -1,6 +1,6 @@
 # CiteThat
 
-![Banner](/public/banner.png);
+![Banner](/public/banner.png)
 ![GitHub](https://img.shields.io/github/license/ashenafee/CiteThat?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ashenafee/CiteThat?style=for-the-badge)
 
