@@ -13,11 +13,10 @@ interface Article {
 }
 
 interface Author {
-    affiliation: string;
+    affiliation?: string;
     family: string;
     given: string;
-    sequence: string;
-    ORCID: string;
+    initials?: string;
 }
 
 interface ArticleStore {
@@ -25,4 +24,4 @@ interface ArticleStore {
     setArticle: (article: Article) => void;
 }
 
-export type { Article, ArticleStore };
+export type { Article, ArticleStore, Author };
